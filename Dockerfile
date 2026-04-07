@@ -2,11 +2,17 @@ FROM python:3.12-slim
 
 WORKDIR /app
 
+RUN adduser --disabled-password --gecos '' appuser
+
 COPY requirements.txt .
 
-RUN pip install --no-cache-dir -r requirements.txt
+USER appuser
 
-COPY . .
+RUN pip install --no-cache-dir --user -r requirements.txt
+
+ENV PATH="/home/appuser/.local/bin:$PATH"
+
+COPY --chown=appuser:appuser . .
 
 RUN python model.py
 
