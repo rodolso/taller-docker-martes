@@ -8,9 +8,9 @@ COPY requirements.txt .
 
 USER appuser
 
-RUN pip install --no-cache-dir --user -r requirements.txt
-
 ENV PATH="/home/appuser/.local/bin:$PATH"
+
+RUN pip install --no-cache-dir --user -r requirements.txt
 
 COPY --chown=appuser:appuser . .
 
