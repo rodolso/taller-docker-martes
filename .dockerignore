@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.git
+*.md
+*.jpg
+*.log
+.DS_Store
+ad_model.pkl
